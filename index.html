@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="feedbackApp" ng-controller="feedbackController">
+<head>
+	<meta charset="utf-8">
+	<title>Feedback Form</title>
+	<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="css/feedback.css">
+</head>
+<body>
+	
+	<div class="container-fluid">
+	<div class="feedback col-xs-12 col-sm-12 co-md-6 col-lg-6">
+		<div class="text-center feedbackHeader">Feedback Form</div>
+		<form class='feedbackForm' name='feedbackForm'>
+		<div class="form-group">
+		    <label>Salutation</label>
+		    <select class="form-control" name="salutation">
+		    	<option ng-repeat="x in salutation">{{x}}</option>
+		    </select>
+		  </div>
+		<div class="form-group">
+		    <label>Your Name</label>
+		    <span class="badge required">*</span>
+		    <span class="pull-right validationRequired textColor hidden" ng-show="feedbackForm.name.$error.required">Your Name is required.</span>
+		    <input type="text" name="name" class="form-control" ng-model='name' id="inputText" placeholder="Your Name" required>
+		  </div>
+			<div class="form-group">
+		    <label>Your Email</label>
+		    <span class="badge required">*</span>
+		    <span  class="pull-right validationRequired textColor hidden" ng-show="feedbackForm.email.$error.required">Your Email is required.</span>
+			<span  class="pull-right validationInvalid textColor hidden" ng-show="feedbackForm.email.$error.email">Invalid email address.</span>
+		    <input type="email" name="email" class="form-control" ng-model='email' id="inputEmail" placeholder="Your Email" required>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label>Feedback</label>
+		    <span class="badge required">*</span>
+		    <span class="pull-right textColor validationRequired hidden" ng-show="feedbackForm.feedback.$error.required">Feedback is required.</span>
+		    <textarea id="inputTextarea" name="feedback" rows="4" class="form-control" ng-model='feedback' placeholder="Please write your Feedback here" required></textarea>
+		    
+		  </div>
+		  <div class="wrapper">
+		  <button type="submit" class="btn btn-primary" ng-click="performValidation()">Submit Feedback</button>
+		  </div>
+		</form>
+	</div>
+	<footer class="text-left footerDisplay">&copy Dhanraj</footer>
+	</div>
+
+	<script src="libs/jquery-3.1.1.min.js"></script>
+	<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+	<script src="libs/angular.min.js"></script> 
+	<script src="controller/feedback.js"></script>
+
+</body>
+</html>
